@@ -2,16 +2,16 @@
 
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-import FloatButton from "../FloatButton";
 import "../../common/Navbar.css";
 import { useRouter } from "next/navigation";
 
 export const Landing = () => {
-  const [techOrArts, settechOrArts] = useState(0);
   const [show, setShow] = useState(true);
-  const size = 1400;
+  const size = 1400; // Mask size
   const cursor = useRef();
   const landingRef = useRef(null);
+
+  // Tracking the mouse pointer and changing the mask postion
   useEffect(() => {
     const cursorset = (e) => {
       const rect = landingRef.current.getBoundingClientRect();
@@ -25,7 +25,6 @@ export const Landing = () => {
   }, []);
 
   const router = useRouter();
-
   const ref = useRef();
 
   const hamburger = () => {
@@ -45,6 +44,7 @@ export const Landing = () => {
 
   return (
     <>
+      {/* NAVBAR */}
       <nav>
         <div
           className="fixed bottom-[100%] z-40 bg-slate-200 ease-in-out duration-1000"
@@ -97,7 +97,6 @@ export const Landing = () => {
               Contact
             </span>
           </div>
-          {/* <FloatButton /> */}
         </div>
       </nav>
       <div
@@ -156,6 +155,7 @@ export const Landing = () => {
 
         <div className="relative">
           <div className="HeroText absolute z-10 top-0 left-0 bg-no-repeat h-full w-full flex flex-col justify-center items-center">
+            {/* Hero Text  */}
             <Image
               className=" animate-wiggle xl:w-auto xl:h-auto w-[50vw] h-auto"
               src={"/tech/Titles.png"}
@@ -174,14 +174,12 @@ export const Landing = () => {
                 alt="Meh"
                 className="w-screen "
               />
-
-              {/* Hero Text  */}
             </div>
           </div>
         </div>
 
-        {/* Gray Scaled Wrapper */}
         {/* ------------------------------------------------------------ */}
+        {/* Gray Scaled Wrapper */}
         <div
           ref={cursor}
           className="Wrapper2 absolute top-0  left-0  z-0 mask h-full w-full overflow-hidden"
@@ -195,20 +193,8 @@ export const Landing = () => {
               alt="Meh"
               className="w-screen "
             />
-
-            <div className="HeroText h-full w-full absolute z-10 top-0 left-0  bg-no-repeat   flex flex-col justify-center items-center ">
-              <div className="opacity-100 flex justify-center items-center">
-                {/* <Image
-                className=" "
-                src={"/tech/Titles.png"}
-                width={800}
-                height={800}
-              ></Image> */}
-              </div>
-            </div>
           </div>
         </div>
-        {/* <FloatButton></FloatButton> */}
       </div>
     </>
   );
